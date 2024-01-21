@@ -10,7 +10,7 @@ import Foundation
 enum Endpoints {
     
     // MARK: - Base Url
-    private static let baseURL = URL(string: "www.themealdb.com/api/json/v1/1")!
+    private static let baseURL = URL(string: "https://www.themealdb.com/api/json/v1/1")!
     
     // MARK: - Helper function to construct URLs
     private static func makeURL(path: String, queryItem: URLQueryItem) -> URL {
