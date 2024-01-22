@@ -1,12 +1,12 @@
 //
-//  SearchResult.swift
+//  FilterResult.swift
 //  Cookbook
 //
-//  Created by Aziz Kızgın on 20.01.2024.
+//  Created by Aziz Kızgın on 23.01.2024.
 //
 
 import Foundation
-struct SearchResult: Decodable {
+struct FilterResult: Decodable {
     let meal: String
     let image: String
     let id: String
