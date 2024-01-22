@@ -14,6 +14,7 @@
 		E003DE312B5C985700253F90 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E003DE302B5C985700253F90 /* HomeView.swift */; };
 		E003DE352B5C989400253F90 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E003DE342B5C989400253F90 /* HomeViewModel.swift */; };
 		E003DE392B5C9DCD00253F90 /* DataFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E003DE382B5C9DCD00253F90 /* DataFetchable.swift */; };
+		E04C1C562B5D7A5300236661 /* FlipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04C1C552B5D7A5300236661 /* FlipCard.swift */; };
 		E07C5D802B59B73200BC0BFD /* CookbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07C5D7F2B59B73200BC0BFD /* CookbookApp.swift */; };
 		E07C5D822B59B73200BC0BFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07C5D812B59B73200BC0BFD /* ContentView.swift */; };
 		E07C5D842B59B73300BC0BFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E07C5D832B59B73300BC0BFD /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		E003DE302B5C985700253F90 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E003DE342B5C989400253F90 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E003DE382B5C9DCD00253F90 /* DataFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetchable.swift; sourceTree = "<group>"; };
+		E04C1C552B5D7A5300236661 /* FlipCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipCard.swift; sourceTree = "<group>"; };
 		E07C5D7C2B59B73200BC0BFD /* Cookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cookbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07C5D7F2B59B73200BC0BFD /* CookbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookApp.swift; sourceTree = "<group>"; };
 		E07C5D812B59B73200BC0BFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		E04C1C542B5D7A1700236661 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				E04C1C552B5D7A5300236661 /* FlipCard.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
 		E07C5D732B59B73200BC0BFD = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +149,7 @@
 		E07C5D7E2B59B73200BC0BFD /* Cookbook */ = {
 			isa = PBXGroup;
 			children = (
+				E04C1C542B5D7A1700236661 /* Commons */,
 				E003DE362B5C9D7B00253F90 /* Sources */,
 				E07C5DAC2B59BDD100BC0BFD /* Networking */,
 				E07C5DAA2B59BC2B00BC0BFD /* Models */,
@@ -339,6 +350,7 @@
 				E003DE352B5C989400253F90 /* HomeViewModel.swift in Sources */,
 				E003DE2C2B5C945E00253F90 /* CategoryManager.swift in Sources */,
 				E07C5D822B59B73200BC0BFD /* ContentView.swift in Sources */,
+				E04C1C562B5D7A5300236661 /* FlipCard.swift in Sources */,
 				E003DE312B5C985700253F90 /* HomeView.swift in Sources */,
 				E07C5DB02B59C08B00BC0BFD /* Endpoints.swift in Sources */,
 				E003DE392B5C9DCD00253F90 /* DataFetchable.swift in Sources */,
