@@ -17,6 +17,7 @@ struct HomeView: View {
                     }
                 }
                 .frame(maxWidth: .infinity)
+                .safeAreaPadding(.top)
             }
         }
     }
