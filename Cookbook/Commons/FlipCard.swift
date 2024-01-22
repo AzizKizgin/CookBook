@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct CardBack : View {
+struct CardFront : View {
     let width : CGFloat
     let height : CGFloat
     @Binding var degree : Double
@@ -44,7 +44,7 @@ struct CardBack : View {
     }
 }
 
-struct CardFront : View {
+struct CardBack : View {
     let width : CGFloat
     let height : CGFloat
     @Binding var degree : Double
@@ -68,8 +68,8 @@ struct CardFront : View {
 struct FlipCard: View {
     //MARK: Variables
     // if numbers here are 0.00 and 90.0 it causes "ignoring singular matrix" error. so i used this weird numbers
-    @State private var backDegree = 0.00001
-    @State private var frontDegree = -89.999
+    @State private var frontDegree = 0.00001
+    @State private var backDegree = -89.999
     @State private var isFlipped = false
 
     let width : CGFloat = 300
@@ -81,17 +81,17 @@ struct FlipCard: View {
         isFlipped = !isFlipped
         if isFlipped {
             withAnimation(.linear(duration: durationAndDelay)) {
-                backDegree = 89.999
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
-                frontDegree = 0.00001
-            }
-        } else {
-            withAnimation(.linear(duration: durationAndDelay)) {
-                frontDegree = -89.999
+                frontDegree = 89.999
             }
             withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
                 backDegree = 0.00001
+            }
+        } else {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                backDegree = -89.999
+            }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                frontDegree = 0.00001
             }
         }
     }
