@@ -21,6 +21,7 @@ struct CardBack : View {
                         .frame(width: width, height: height - 40)
                         .aspectRatio(contentMode: .fit)
                         .clipShape(UnevenRoundedRectangle(topLeadingRadius: 20, topTrailingRadius: 20))
+                        .shadow(color: .gray, radius: 2, x: 0, y: 0)
                 } placeholder: {
                     ProgressView()
                         .controlSize(.large)
