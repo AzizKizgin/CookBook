@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CategoryManager: DataFetchable {
+class CategoryManager {
     
     static let shared = CategoryManager()
     
