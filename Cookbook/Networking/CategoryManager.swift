@@ -17,9 +17,8 @@ class CategoryManager {
         DataManager.shared.fetchData(for: Endpoints.categories) { (result: Result<CategoryDataType,Error>) in
             switch result {
             case .success(let data):
-                print(data)
                 completion(data.categories)
-            case .failure(let error):
+            case .failure:
                 completion(nil)
             }
         }
