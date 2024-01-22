@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Meals : Decodable {
+struct Meal : Decodable {
     let id : String
     let name : String
     let drinkAlternate : String?
