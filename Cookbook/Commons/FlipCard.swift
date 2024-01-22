@@ -18,18 +18,18 @@ private struct CardFront : View {
                 AsyncImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/300px-Good_Food_Display_-_NCI_Visuals_Online.jpg")){ image in
                     image
                         .resizable()
-                        .frame(width: width, height: height - 40)
+                        .frame(width: width, height: height - 50)
                         .aspectRatio(contentMode: .fit)
                         .clipShape(UnevenRoundedRectangle(topLeadingRadius: 20, topTrailingRadius: 20))
                         .shadow(color: .gray, radius: 2, x: 0, y: 0)
                 } placeholder: {
                     ProgressView()
                         .controlSize(.large)
-                        .frame(width: width, height: height - 40)
+                        .frame(width: width, height: height - 50)
                 }
                 Button(action: {}, label: {
                     Text("See Meals")
-                        .frame(height: 40)
+                        .frame(height: 50)
                         .frame(maxWidth: .infinity)
                 })
             }
