@@ -9,7 +9,16 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            ScrollView {
+                VStack(spacing: 50){
+                    ForEach(0...10, id: \.self) { item in
+                        FlipCard()
+                    }
+                }
+                .frame(maxWidth: .infinity)
+            }
+        }
     }
 }
 
