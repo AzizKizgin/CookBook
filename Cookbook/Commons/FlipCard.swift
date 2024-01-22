@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct CardFront : View {
+private struct CardFront : View {
     let width : CGFloat
     let height : CGFloat
     @Binding var degree : Double
@@ -36,7 +36,7 @@ struct CardFront : View {
             .frame(width: width, height: height)
             .background(
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(.white)
+                    .fill(.background)
                     .frame(width: width, height: height)
                     .shadow(color: .gray, radius: 2, x: 0, y: 0)
             )
@@ -44,7 +44,7 @@ struct CardFront : View {
     }
 }
 
-struct CardBack : View {
+private struct CardBack : View {
     let width : CGFloat
     let height : CGFloat
     @Binding var degree : Double
@@ -56,7 +56,7 @@ struct CardBack : View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(.white)
+                    .fill(.background)
                     .frame(width: width, height: height)
                     .shadow(color: .gray, radius: 2, x: 0, y: 0)
             )
