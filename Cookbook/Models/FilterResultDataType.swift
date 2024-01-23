@@ -6,6 +6,7 @@
 //
 
 import Foundation
+// This model is for fetching meals with filtering by category, ingredient and area.
 struct FilterResultDataType: Decodable {
     let meals: [FilterResult]
 }

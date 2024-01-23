@@ -6,6 +6,7 @@
 //
 
 import Foundation
+// This model is for searching meal by its fullname, first letter and id.
 struct SearchMealDataType: Decodable {
     let meals: [Meal]
 }
