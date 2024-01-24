@@ -40,16 +40,6 @@ private struct CardFront : View {
                         .controlSize(.large)
                 }
                 .frame(width: width, height: imageHeight)
-                .clipShape(
-                    UnevenRoundedRectangle(
-                        topLeadingRadius: 20,
-                        bottomLeadingRadius: showButton ? 0 : 20,
-                        bottomTrailingRadius: showButton ? 0 : 20,
-                        topTrailingRadius: 20
-                    )
-                )
-                .shadow(color: .gray, radius: 2, x: 0, y: 0)
-                
                 if showButton {
                     Button(action: onButtonPress, label: {
                         Text(buttonTitle ?? "See All")
@@ -122,6 +112,9 @@ struct FlipCard: View {
 
     //MARK: Flip Card Function
     func flipCard () {
+        if backText.isEmpty {
+            return
+        }
         isFlipped = !isFlipped
         if isFlipped {
             withAnimation(.linear(duration: durationAndDelay)) {
@@ -156,7 +149,9 @@ struct FlipCard: View {
             }
             ZStack {
                 CardFront(degree: $frontDegree, width: width, height: height, url: url, showButton: showButton, buttonTitle: buttonTitle, onButtonPress: onButtonPress)
-                CardBack(degree: $backDegree, width: width, height: height, text: backText)
+                if !backText.isEmpty {
+                    CardBack(degree: $backDegree, width: width, height: height, text: backText)
+                }
             }
             .onTapGesture {
                 flipCard()
