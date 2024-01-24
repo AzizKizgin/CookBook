@@ -22,12 +22,11 @@ struct HomeView: View {
                         }
                     }
                     .frame(maxWidth: .infinity)
-                    .safeAreaPadding(.top)
+                }
+                .navigationDestination(item: $category){ item in
+                    Text(item)
                 }
             }
-        }
-        .navigationDestination(item: $category){ item in
-            Text(item)
         }
         .onAppear{
             homeVM.getCategories()
