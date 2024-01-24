@@ -27,6 +27,7 @@
 		E07C5DB02B59C08B00BC0BFD /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07C5DAF2B59C08B00BC0BFD /* Endpoints.swift */; };
 		E07C5DB22B59D46700BC0BFD /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07C5DB12B59D46700BC0BFD /* Meal.swift */; };
 		E07C5DB62B59E7F900BC0BFD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07C5DB52B59E7F900BC0BFD /* Category.swift */; };
+		E07EDD292B6184CD00A9AAEE /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07EDD282B6184CD00A9AAEE /* LoadingIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		E07C5DAF2B59C08B00BC0BFD /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		E07C5DB12B59D46700BC0BFD /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		E07C5DB52B59E7F900BC0BFD /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		E07EDD282B6184CD00A9AAEE /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				E04C1C552B5D7A5300236661 /* FlipCard.swift */,
+				E07EDD282B6184CD00A9AAEE /* LoadingIndicator.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				E003DE2A2B5C3E5300253F90 /* DataManager.swift in Sources */,
 				E003DE2E2B5C968B00253F90 /* CategoryDataType.swift in Sources */,
 				E01080962B5F26C9002F938C /* MealMenager.swift in Sources */,
+				E07EDD292B6184CD00A9AAEE /* LoadingIndicator.swift in Sources */,
 				E07C5D802B59B73200BC0BFD /* CookbookApp.swift in Sources */,
 				E010809C2B5F2ED5002F938C /* FilterResultDataType.swift in Sources */,
 				E07C5DB62B59E7F900BC0BFD /* Category.swift in Sources */,
