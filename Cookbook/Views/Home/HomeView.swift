@@ -10,23 +10,29 @@ import SwiftUI
 struct HomeView: View {
     @State private var category: String?
     @StateObject var homeVM = HomeViewModel()
+    let columns = [
+        GridItem(.adaptive(minimum: 300))
+    ]
     var body: some View {
         NavigationStack{
             if homeVM.isLoading {
                 LoadingIndicator()
             } else {
-                ScrollView {
-                    VStack(spacing: 50){
+                List {
+                    LazyVGrid(columns: columns,spacing: 50){
                         ForEach(homeVM.categories, id: \.id) { category in
                             FlipCard(url: category.image, showButton: true, buttonTitle: "See Meals", onButtonPress: {goCategoryPage(for: category)}, backText: category.description, title: category.name)
                         }
                     }
                     .frame(maxWidth: .infinity)
                 }
+                .buttonStyle(.borderless)
+                .scrollContentBackground(.hidden)
                 .navigationDestination(item: $category){ item in
                     Text(item)
                 }
             }
+            
         }
         .onAppear{
             homeVM.getCategories()
