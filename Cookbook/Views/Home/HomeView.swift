@@ -8,21 +8,41 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var category: String?
+    @StateObject var homeVM = HomeViewModel()
     var body: some View {
         NavigationStack{
-            ScrollView {
-                VStack(spacing: 50){
-                    ForEach(0...10, id: \.self) { item in
-                        FlipCard()
+            if homeVM.isLoading {
+                LoadingIndicator()
+            } else {
+                ScrollView {
+                    VStack(spacing: 50){
+                        ForEach(homeVM.categories, id: \.id) { category in
+                            FlipCard(url: category.image, showButton: true, buttonTitle: "See Meals", onButtonPress: {goCategoryPage(for: category)}, backText: category.description, title: category.name)
+                        }
                     }
+                    .frame(maxWidth: .infinity)
+                    .safeAreaPadding(.top)
                 }
-                .frame(maxWidth: .infinity)
-                .safeAreaPadding(.top)
             }
+        }
+        .navigationDestination(item: $category){ item in
+            Text(item)
+        }
+        .onAppear{
+            homeVM.getCategories()
         }
     }
 }
 
+extension HomeView {
+    private func goCategoryPage(for category: Category) {
+        self.category = category.name
+    }
+}
+
 #Preview {
-    HomeView()
+    NavigationStack{
+        HomeView()
+    }
 }
