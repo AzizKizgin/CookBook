@@ -83,27 +83,15 @@ private struct CardBack : View {
 
 struct FlipCard: View {
     //MARK: Variables
-    let url: String
-    let showButton: Bool
-    let buttonTitle: String?
-    let onButtonPress: () -> Void
-    let backText: String
-    let width : CGFloat
-    let height : CGFloat
-    let durationAndDelay : CGFloat
-    let title: String?
-    
-    init(url: String, showButton: Bool = false, buttonTitle: String? = nil, onButtonPress: @escaping () -> Void = {}, backText: String = "", width: CGFloat = 300, height: CGFloat = 300, delay: CGFloat = 0.3, title: String? = nil) {
-        self.url = url
-        self.showButton = showButton
-        self.buttonTitle = buttonTitle
-        self.onButtonPress = onButtonPress
-        self.backText = backText
-        self.width = width
-        self.height = height
-        self.durationAndDelay = delay
-        self.title = title
-    }
+    var url: String
+    var isButtonVisible: Bool = false
+    var buttonTitle: String?
+    var onButtonPress: () -> Void = {}
+    var backText: String?
+    var width : CGFloat = 300
+    var height : CGFloat = 300
+    var durationAndDelay : CGFloat = 0.3
+    var title: String?
     
     // if numbers here are 0.00 and 90.0 it causes "ignoring singular matrix" error. so i used this weird numbers
     @State private var frontDegree = 0.00001
@@ -112,7 +100,7 @@ struct FlipCard: View {
 
     //MARK: Flip Card Function
     func flipCard () {
-        if backText.isEmpty {
+        if backText == nil {
             return
         }
         isFlipped = !isFlipped
@@ -148,8 +136,8 @@ struct FlipCard: View {
                 .frame(width: width)
             }
             ZStack {
-                CardFront(degree: $frontDegree, width: width, height: height, url: url, showButton: showButton, buttonTitle: buttonTitle, onButtonPress: onButtonPress)
-                if !backText.isEmpty {
+                CardFront(degree: $frontDegree, width: width, height: height, url: url, showButton: isButtonVisible, buttonTitle: buttonTitle, onButtonPress: onButtonPress)
+                if let backText {
                     CardBack(degree: $backDegree, width: width, height: height, text: backText)
                 }
             }
@@ -160,6 +148,68 @@ struct FlipCard: View {
     }
 }
 
+extension FlipCard {
+    func url(_ url: String) -> Self {
+        var copy = self
+        copy.url = url
+        return copy
+    }
+    
+    func showButton() -> Self {
+        var copy = self
+        copy.isButtonVisible = true
+        return copy
+    }
+    
+    func buttonTitle(_ title: String) -> Self {
+        var copy = self
+        copy.buttonTitle = title
+        return copy
+    }
+    
+    func onButtonPress(_ onPress: @escaping () -> Void) -> Self {
+        var copy = self
+        copy.onButtonPress = onPress
+        return copy
+    }
+    
+    func backText(_ text: String) -> Self {
+        var copy = self
+        copy.backText = text
+        return copy
+    }
+    
+    func width(_ width: CGFloat) -> Self {
+        var copy = self
+        copy.width = width
+        return copy
+    }
+    
+    func height(_ height: CGFloat) -> Self {
+        var copy = self
+        copy.height = height
+        return copy
+    }
+     
+    func duration(_ delay: CGFloat) -> Self {
+        var copy = self
+        copy.durationAndDelay = delay
+        return copy
+    }
+    
+    func title(_ title: String) -> Self {
+        var copy = self
+        copy.title = title
+        return copy
+    }
+}
+
 #Preview{
-    FlipCard(url: "https://www.themealdb.com/images/category/vegan.png", showButton: true, buttonTitle: "See Meals", onButtonPress: {print("dddd")}, backText: "Veganism is both the practice of abstaining from the use of animal products, particularly in diet, and an associated philosophy that rejects the commodity status of animals.[b] A follower of either the diet or the philosophy is known as a vegan (pronounced /ˈviːɡən/ VEE-gən). Distinctions are sometimes made between several categories of veganism. Dietary vegans (or strict vegetarians) refrain from consuming animal products, not only meat but also eggs, dairy products and other animal-derived substances.[c] The term ethical vegan is often applied to those who not only follow a vegan diet but extend the philosophy into other areas of their lives, and oppose the use of animals for any purpose.[d] Another term is environmental veganism, which refers to the avoidance of animal products on the premise that the harvesting or industrial farming of animals is environmentally damaging and unsustainable.")
+    FlipCard(url: "https://www.themealdb.com/images/category/vegan.png")
+        .showButton()
+        .buttonTitle("See Meals")
+        .onButtonPress {
+            print("dddd")
+        }
+        .backText("Veganism is both the practice of abstaining from the use of animal products, particularly in diet, and an associated philosophy that rejects the commodity status of animals.[b] A follower of either the diet or the philosophy is known as a vegan (pronounced /ˈviːɡən/ VEE-gən). Distinctions are sometimes made between several categories of veganism. Dietary vegans (or strict vegetarians) refrain from consuming animal products, not only meat but also eggs, dairy products and other animal-derived substances.[c] The term ethical vegan is often applied to those who not only follow a vegan diet but extend the philosophy into other areas of their lives, and oppose the use of animals for any purpose.[d] Another term is environmental veganism, which refers to the avoidance of animal products on the premise that the harvesting or industrial farming of animals is environmentally damaging and unsustainable.")
 }

@@ -21,7 +21,14 @@ struct HomeView: View {
                 List {
                     LazyVGrid(columns: columns,spacing: 50){
                         ForEach(homeVM.categories, id: \.id) { category in
-                            FlipCard(url: category.image, showButton: true, buttonTitle: "See Meals", onButtonPress: {goCategoryPage(for: category)}, backText: category.description, title: category.name)
+                            FlipCard(url: category.image)
+                                .showButton()
+                                .buttonTitle("See Meals")
+                                .onButtonPress {
+                                    goCategoryPage(for: category)
+                                }
+                                .backText(category.description)
+                                .title(category.name)
                         }
                     }
                     .frame(maxWidth: .infinity)
