@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var category: String?
     @StateObject var homeVM = HomeViewModel()
     let columns = [
         GridItem(.adaptive(minimum: 300))
@@ -35,11 +34,10 @@ struct HomeView: View {
                 }
                 .buttonStyle(.borderless)
                 .scrollContentBackground(.hidden)
-                .navigationDestination(item: $category){ item in
+                .navigationDestination(item: $homeVM.category){ item in
                     Text(item)
                 }
             }
-            
         }
         .onAppear{
             homeVM.getCategories()
@@ -49,7 +47,7 @@ struct HomeView: View {
 
 extension HomeView {
     private func goCategoryPage(for category: Category) {
-        self.category = category.name
+        self.homeVM.category = category.name
     }
 }
 

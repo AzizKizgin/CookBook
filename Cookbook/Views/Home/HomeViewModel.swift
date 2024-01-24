@@ -10,6 +10,7 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var categories: [Category] = []
+    @Published var category: String?
     
     func getCategories() {
         self.isLoading = true
