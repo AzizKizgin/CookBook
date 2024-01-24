@@ -34,6 +34,7 @@ private struct CardFront : View {
                 AsyncImage(url: URL(string: url)){ image in
                     image
                         .resizable()
+                        .scaledToFit()
                 } placeholder: {
                     ProgressView()
                         .controlSize(.large)
@@ -47,7 +48,6 @@ private struct CardFront : View {
                         topTrailingRadius: 20
                     )
                 )
-                .aspectRatio(contentMode: .fit)
                 .shadow(color: .gray, radius: 2, x: 0, y: 0)
                 
                 if showButton {
@@ -101,8 +101,9 @@ struct FlipCard: View {
     let width : CGFloat
     let height : CGFloat
     let durationAndDelay : CGFloat
+    let title: String?
     
-    init(url: String, showButton: Bool = false, buttonTitle: String? = nil, onButtonPress: @escaping () -> Void = {}, backText: String = "", width: CGFloat = 300, height: CGFloat = 375, delay: CGFloat = 0.3) {
+    init(url: String, showButton: Bool = false, buttonTitle: String? = nil, onButtonPress: @escaping () -> Void = {}, backText: String = "", width: CGFloat = 300, height: CGFloat = 300, delay: CGFloat = 0.3, title: String? = nil) {
         self.url = url
         self.showButton = showButton
         self.buttonTitle = buttonTitle
@@ -111,6 +112,7 @@ struct FlipCard: View {
         self.width = width
         self.height = height
         self.durationAndDelay = delay
+        self.title = title
     }
     
     // if numbers here are 0.00 and 90.0 it causes "ignoring singular matrix" error. so i used this weird numbers
@@ -140,16 +142,29 @@ struct FlipCard: View {
     
     //MARK: View Body
     var body: some View {
-        ZStack {
-            CardFront(degree: $frontDegree, width: width, height: height, url: url, showButton: showButton, buttonTitle: buttonTitle, onButtonPress: onButtonPress)
-            CardBack(degree: $backDegree, width: width, height: height, text: backText)
-        }
-        .onTapGesture {
-            flipCard()
+        VStack {
+            if let title{
+                HStack{
+                    Text(title)
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .frame(alignment: .leading)
+                        .foregroundStyle(.accent)
+                    Spacer()
+                }
+                .frame(width: width)
+            }
+            ZStack {
+                CardFront(degree: $frontDegree, width: width, height: height, url: url, showButton: showButton, buttonTitle: buttonTitle, onButtonPress: onButtonPress)
+                CardBack(degree: $backDegree, width: width, height: height, text: backText)
+            }
+            .onTapGesture {
+                flipCard()
+            }
         }
     }
 }
 
 #Preview{
-    FlipCard(url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/300px-Good_Food_Display_-_NCI_Visuals_Online.jpg", showButton: true, buttonTitle: "See Meals", onButtonPress: {print("dddd")}, backText: "Veganism is both the practice of abstaining from the use of animal products, particularly in diet, and an associated philosophy that rejects the commodity status of animals.[b] A follower of either the diet or the philosophy is known as a vegan (pronounced /ˈviːɡən/ VEE-gən). Distinctions are sometimes made between several categories of veganism. Dietary vegans (or strict vegetarians) refrain from consuming animal products, not only meat but also eggs, dairy products and other animal-derived substances.[c] The term ethical vegan is often applied to those who not only follow a vegan diet but extend the philosophy into other areas of their lives, and oppose the use of animals for any purpose.[d] Another term is environmental veganism, which refers to the avoidance of animal products on the premise that the harvesting or industrial farming of animals is environmentally damaging and unsustainable.")
+    FlipCard(url: "https://www.themealdb.com/images/category/vegan.png", showButton: true, buttonTitle: "See Meals", onButtonPress: {print("dddd")}, backText: "Veganism is both the practice of abstaining from the use of animal products, particularly in diet, and an associated philosophy that rejects the commodity status of animals.[b] A follower of either the diet or the philosophy is known as a vegan (pronounced /ˈviːɡən/ VEE-gən). Distinctions are sometimes made between several categories of veganism. Dietary vegans (or strict vegetarians) refrain from consuming animal products, not only meat but also eggs, dairy products and other animal-derived substances.[c] The term ethical vegan is often applied to those who not only follow a vegan diet but extend the philosophy into other areas of their lives, and oppose the use of animals for any purpose.[d] Another term is environmental veganism, which refers to the avoidance of animal products on the premise that the harvesting or industrial farming of animals is environmentally damaging and unsustainable.")
 }
