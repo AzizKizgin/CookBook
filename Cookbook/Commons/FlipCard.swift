@@ -39,6 +39,15 @@ private struct CardFront : View {
                     ProgressView()
                         .controlSize(.large)
                 }
+                .clipShape(
+                    UnevenRoundedRectangle(
+                        topLeadingRadius: 20,
+                        bottomLeadingRadius: showButton ? 0 : 20,
+                        bottomTrailingRadius: showButton ? 0 : 20,
+                        topTrailingRadius: 20
+                    )
+                )
+                .shadow(color: .gray, radius: 2, x: 0, y: 0)
                 .frame(width: width, height: imageHeight)
                 if showButton {
                     Button(action: onButtonPress, label: {
@@ -92,34 +101,12 @@ struct FlipCard: View {
     var height : CGFloat = 300
     var durationAndDelay : CGFloat = 0.3
     var title: String?
+    var onCardPress: () -> Void = {}
     
     // if numbers here are 0.00 and 90.0 it causes "ignoring singular matrix" error. so i used this weird numbers
     @State private var frontDegree = 0.00001
     @State private var backDegree = -89.999
     @State private var isFlipped = false
-
-    //MARK: Flip Card Function
-    func flipCard () {
-        if backText == nil {
-            return
-        }
-        isFlipped = !isFlipped
-        if isFlipped {
-            withAnimation(.linear(duration: durationAndDelay)) {
-                frontDegree = 89.999
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
-                backDegree = 0.00001
-            }
-        } else {
-            withAnimation(.linear(duration: durationAndDelay)) {
-                backDegree = -89.999
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
-                frontDegree = 0.00001
-            }
-        }
-    }
     
     //MARK: View Body
     var body: some View {
@@ -202,10 +189,40 @@ extension FlipCard {
         copy.title = title
         return copy
     }
+    
+    func onCardPress(_ onPress: @escaping () -> Void) -> Self {
+        var copy = self
+        copy.onCardPress = onPress
+        return copy
+    }
+    
+    //MARK: Flip Card Function
+    private func flipCard () {
+        if backText == nil {
+            self.onCardPress()
+            return
+        }
+        isFlipped = !isFlipped
+        if isFlipped {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                frontDegree = 89.999
+            }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                backDegree = 0.00001
+            }
+        } else {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                backDegree = -89.999
+            }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                frontDegree = 0.00001
+            }
+        }
+    }
 }
 
 #Preview{
-    FlipCard(url: "https://www.themealdb.com/images/category/vegan.png")
+    FlipCard(url: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg")
         .showButton()
         .buttonTitle("See Meals")
         .onButtonPress {
