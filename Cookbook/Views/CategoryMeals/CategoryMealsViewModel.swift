@@ -9,6 +9,7 @@ import Foundation
 class CategoryMealsViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var meals: [FilterResult] = []
+    @Published var mealId: String?
     
     func getCategoryMeals(category: String) {
         self.isLoading = true
