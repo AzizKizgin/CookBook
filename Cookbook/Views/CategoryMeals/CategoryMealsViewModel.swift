@@ -10,6 +10,8 @@ class CategoryMealsViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var meals: [FilterResult] = []
     @Published var mealId: String?
+    @Published var filteredMeals: [FilterResult] = []
+    @Published var searchText: String = ""
     
     func getCategoryMeals(category: String) {
         self.isLoading = true
@@ -17,9 +19,14 @@ class CategoryMealsViewModel: ObservableObject {
             DispatchQueue.main.async {
                 if let meals {
                     self?.meals = meals
+                    self?.filteredMeals = meals
                     self?.isLoading = false
                 }
             }
         }
+    }
+    
+    func searchMeals(){
+        filteredMeals = searchText.isEmpty ? meals : meals.filter { $0.mealName.contains(searchText) }
     }
 }
