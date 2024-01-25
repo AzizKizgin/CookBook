@@ -36,15 +36,16 @@ struct CategoryMealsView: View {
                 .navigationDestination(item: $categoryMealsVM.mealId){ item in
                     Text(item)
                 }
+                .searchable(text: $categoryMealsVM.searchText, prompt: "Search...")
+                .onChange(of: categoryMealsVM.searchText, { _, _ in
+                    categoryMealsVM.searchMeals()
+                })
             }
         }
-        .searchable(text: $categoryMealsVM.searchText, prompt: "Search...")
-        .onChange(of: categoryMealsVM.searchText, { _, _ in
-            categoryMealsVM.searchMeals()
-        })
         .onAppear{
             categoryMealsVM.getCategoryMeals(category: category)
         }
+        .navigationTitle(category)
     }
 }
 
@@ -55,5 +56,7 @@ extension CategoryMealsView {
 }
 
 #Preview {
-    CategoryMealsView(category: "Beef")
+    NavigationStack{
+        CategoryMealsView(category: "Beef")
+    }
 }
