@@ -7,12 +7,12 @@
 
 import Foundation
 struct FilterResult: Decodable {
-    let meal: String
+    let mealName: String
     let image: String
     let id: String
     
     enum CodingKeys: String, CodingKey {
-        case meal = "strMeal"
+        case mealName = "strMeal"
         case image = "strMealThumb"
         case id = "idMeal"
     }
