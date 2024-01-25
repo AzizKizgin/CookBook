@@ -35,10 +35,11 @@ struct HomeView: View {
                 .buttonStyle(.borderless)
                 .scrollContentBackground(.hidden)
                 .navigationDestination(item: $homeVM.category){ item in
-                    Text(item)
+                    CategoryMealsView(category: item)
                 }
             }
         }
+        .navigationTitle("Categories")
         .onAppear{
             homeVM.getCategories()
         }
