@@ -17,6 +17,8 @@
 		E010809A2B5F2E97002F938C /* FilterResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01080992B5F2E97002F938C /* FilterResult.swift */; };
 		E010809C2B5F2ED5002F938C /* FilterResultDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E010809B2B5F2ED5002F938C /* FilterResultDataType.swift */; };
 		E01C8A2E2B62E47400329720 /* FavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C8A2D2B62E47400329720 /* FavButton.swift */; };
+		E01C8A312B63110D00329720 /* MealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C8A302B63110D00329720 /* MealDetailView.swift */; };
+		E01C8A332B63111E00329720 /* MealDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C8A322B63111E00329720 /* MealDetailViewModel.swift */; };
 		E04C1C562B5D7A5300236661 /* FlipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04C1C552B5D7A5300236661 /* FlipCard.swift */; };
 		E07C5D802B59B73200BC0BFD /* CookbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07C5D7F2B59B73200BC0BFD /* CookbookApp.swift */; };
 		E07C5D822B59B73200BC0BFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07C5D812B59B73200BC0BFD /* ContentView.swift */; };
@@ -61,6 +63,8 @@
 		E01080992B5F2E97002F938C /* FilterResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResult.swift; sourceTree = "<group>"; };
 		E010809B2B5F2ED5002F938C /* FilterResultDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultDataType.swift; sourceTree = "<group>"; };
 		E01C8A2D2B62E47400329720 /* FavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavButton.swift; sourceTree = "<group>"; };
+		E01C8A302B63110D00329720 /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
+		E01C8A322B63111E00329720 /* MealDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModel.swift; sourceTree = "<group>"; };
 		E04C1C552B5D7A5300236661 /* FlipCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipCard.swift; sourceTree = "<group>"; };
 		E07C5D7C2B59B73200BC0BFD /* Cookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cookbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07C5D7F2B59B73200BC0BFD /* CookbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookApp.swift; sourceTree = "<group>"; };
@@ -119,6 +123,15 @@
 			children = (
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		E01C8A2F2B6310FA00329720 /* MealDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E01C8A302B63110D00329720 /* MealDetailView.swift */,
+				E01C8A322B63111E00329720 /* MealDetailViewModel.swift */,
+			);
+			path = MealDetail;
 			sourceTree = "<group>";
 		};
 		E04C1C542B5D7A1700236661 /* Commons */ = {
@@ -195,6 +208,7 @@
 		E07C5DA92B59BC2600BC0BFD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E01C8A2F2B6310FA00329720 /* MealDetail */,
 				E07EDD2A2B6199F300A9AAEE /* CategoryMeals */,
 				E003DE2F2B5C983D00253F90 /* Home */,
 			);
@@ -372,6 +386,7 @@
 				E07EDD2E2B619A5500A9AAEE /* CategoryMealsViewModel.swift in Sources */,
 				E07C5D822B59B73200BC0BFD /* ContentView.swift in Sources */,
 				E04C1C562B5D7A5300236661 /* FlipCard.swift in Sources */,
+				E01C8A312B63110D00329720 /* MealDetailView.swift in Sources */,
 				E003DE312B5C985700253F90 /* HomeView.swift in Sources */,
 				E01080982B5F2C71002F938C /* SearchMealDataType.swift in Sources */,
 				E01C8A2E2B62E47400329720 /* FavButton.swift in Sources */,
@@ -382,6 +397,7 @@
 				E07EDD292B6184CD00A9AAEE /* LoadingIndicator.swift in Sources */,
 				E07C5D802B59B73200BC0BFD /* CookbookApp.swift in Sources */,
 				E010809C2B5F2ED5002F938C /* FilterResultDataType.swift in Sources */,
+				E01C8A332B63111E00329720 /* MealDetailViewModel.swift in Sources */,
 				E07C5DB62B59E7F900BC0BFD /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
