@@ -51,8 +51,8 @@ enum Endpoints {
     }
     
     // MARK: - Get Ingredient Image
-    static func getIngredientImage(name: String, smallImage: Bool = false) -> URL {
+    static func getIngredientImage(name: String, smallImage: Bool = false) -> String {
         let size = smallImage ? "-Small": ""
-        return URL(string: "www.themealdb.com/images/ingredients/\(name+size).png")!
+        return "https://www.themealdb.com/images/ingredients/\(name+size).png"
     }
 }
