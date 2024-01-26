@@ -116,4 +116,37 @@ struct Meal : Decodable {
         case creativeCommonsConfirmed = "strCreativeCommonsConfirmed"
         case dateModified = "dateModified"
     }
+    
+    func getIngredients() -> [Ingredient]{
+        let ingredMeasurements = [
+            Ingredient(name: self.ingredient1 ?? "", quantity: self.measure1 ?? ""),
+            Ingredient(name: self.ingredient2 ?? "", quantity: self.measure2 ?? ""),
+            Ingredient(name: self.ingredient3 ?? "", quantity: self.measure3 ?? ""),
+            Ingredient(name: self.ingredient4 ?? "", quantity: self.measure4 ?? ""),
+            Ingredient(name: self.ingredient5 ?? "", quantity: self.measure5 ?? ""),
+            Ingredient(name: self.ingredient6 ?? "", quantity: self.measure6 ?? ""),
+            Ingredient(name: self.ingredient7 ?? "", quantity: self.measure7 ?? ""),
+            Ingredient(name: self.ingredient8 ?? "", quantity: self.measure8 ?? ""),
+            Ingredient(name: self.ingredient9 ?? "", quantity: self.measure9 ?? ""),
+            Ingredient(name: self.ingredient10 ?? "", quantity: self.measure10 ?? ""),
+            Ingredient(name: self.ingredient11 ?? "", quantity: self.measure11 ?? ""),
+            Ingredient(name: self.ingredient12 ?? "", quantity: self.measure12 ?? ""),
+            Ingredient(name: self.ingredient13 ?? "", quantity: self.measure13 ?? ""),
+            Ingredient(name: self.ingredient14 ?? "", quantity: self.measure14 ?? ""),
+            Ingredient(name: self.ingredient15 ?? "", quantity: self.measure15 ?? ""),
+            Ingredient(name: self.ingredient16 ?? "", quantity: self.measure16 ?? ""),
+            Ingredient(name: self.ingredient17 ?? "", quantity: self.measure17 ?? ""),
+            Ingredient(name: self.ingredient18 ?? "", quantity: self.measure18 ?? ""),
+            Ingredient(name: self.ingredient19 ?? "", quantity: self.measure19 ?? ""),
+            Ingredient(name: self.ingredient20 ?? "", quantity: self.measure20 ?? ""),
+        ]
+        return ingredMeasurements.filter { !($0.name.isEmpty || $0.quantity.isEmpty) }
+    }
+}
+
+struct Ingredient: Codable, Identifiable {
+    var id = UUID()
+    
+    let name: String
+    let quantity: String
 }
