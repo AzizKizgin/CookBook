@@ -1,26 +1,27 @@
 //
-//  CategoryMealsView.swift
+//  FilteredMealsView.swift
 //  Cookbook
 //
-//  Created by Aziz Kızgın on 24.01.2024.
+//  Created by Aziz Kızgın on 26.01.2024.
 //
 
 import SwiftUI
 
-struct CategoryMealsView: View {
-    let category: String
-    @StateObject var categoryMealsVM = CategoryMealsViewModel()
+struct FilteredMealsView: View {
+    let filterBy: String
+    let type: FilterType
+    @StateObject var filteredMealsVM = FilteredMealsViewModel()
     let columns = [
         GridItem(.adaptive(minimum: 300))
     ]
     var body: some View {
         NavigationStack{
-            if categoryMealsVM.isLoading {
+            if filteredMealsVM.isLoading {
                 LoadingIndicator()
             } else {
                 ScrollView {
                     LazyVGrid(columns: columns,spacing: 50){
-                        ForEach(categoryMealsVM.filteredMeals, id: \.id) { meal in
+                        ForEach(filteredMealsVM.filteredMeals, id: \.id) { meal in
                             FlipCard(url: meal.image)
                                 .onButtonPress {
                                     goMealRecipe(for: meal)
@@ -33,30 +34,30 @@ struct CategoryMealsView: View {
                     }
                     .frame(maxWidth: .infinity)
                 }
-                .navigationDestination(item: $categoryMealsVM.mealId){ item in
+                .navigationDestination(item: $filteredMealsVM.mealId){ item in
                     MealDetailView(mealId: item)
                 }
-                .searchable(text: $categoryMealsVM.searchText, prompt: "Search...")
-                .onChange(of: categoryMealsVM.searchText, { _, _ in
-                    categoryMealsVM.searchMeals()
+                .searchable(text: $filteredMealsVM.searchText, prompt: "Search...")
+                .onChange(of: filteredMealsVM.searchText, { _, _ in
+                    filteredMealsVM.searchMeals()
                 })
             }
         }
         .onAppear{
-            categoryMealsVM.getCategoryMeals(category: category)
+            filteredMealsVM.getMeals(by: filterBy, type: type)
         }
-        .navigationTitle(category)
+        .navigationTitle(filterBy)
     }
 }
 
-extension CategoryMealsView {
+extension FilteredMealsView {
     private func goMealRecipe(for meal: FilterResult) {
-        self.categoryMealsVM.mealId = meal.id
+        self.filteredMealsVM.mealId = meal.id
     }
 }
 
 #Preview {
     NavigationStack{
-        CategoryMealsView(category: "Beef")
+        FilteredMealsView(filterBy: "Lemon",type: .ingredient)
     }
 }
