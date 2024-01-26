@@ -34,7 +34,7 @@ struct CategoryMealsView: View {
                     .frame(maxWidth: .infinity)
                 }
                 .navigationDestination(item: $categoryMealsVM.mealId){ item in
-                    Text(item)
+                    MealDetailView(mealId: item)
                 }
                 .searchable(text: $categoryMealsVM.searchText, prompt: "Search...")
                 .onChange(of: categoryMealsVM.searchText, { _, _ in
