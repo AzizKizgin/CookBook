@@ -35,7 +35,7 @@ struct HomeView: View {
                 .buttonStyle(.borderless)
                 .scrollContentBackground(.hidden)
                 .navigationDestination(item: $homeVM.category){ item in
-                    CategoryMealsView(category: item)
+                    FilteredMealsView(filterBy: item, type: .category)
                 }
             }
         }
