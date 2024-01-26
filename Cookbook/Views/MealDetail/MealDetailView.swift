@@ -60,7 +60,7 @@ struct MealDetailView: View {
                 ScrollView(.horizontal){
                     HStack(spacing:20){
                         ForEach(mealDetailVM.meal?.getIngredients() ?? [],id:\.id){ ingredient in
-                            FlipCard(url: "https://www.themealdb.com/images/ingredients/\(ingredient.name.uppercased()).png")
+                            FlipCard(url: Endpoints.getIngredientImage(name: ingredient.name.uppercased()))
                                 .width(100)
                                 .height(100)
                         }
