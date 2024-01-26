@@ -9,6 +9,7 @@ import Foundation
 class MealDetailViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var meal: Meal?
+    @Published var ingredient: String?
     
     func getMeal(id: String) {
         self.isLoading = true
@@ -20,5 +21,9 @@ class MealDetailViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func goIngredientDetail(ingredient: String){
+        self.ingredient = ingredient
     }
 }
