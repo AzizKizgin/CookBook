@@ -39,7 +39,7 @@ struct HomeView: View {
                 }
             }
         }
-        .navigationTitle("Categories")
+      
         .onAppear{
             homeVM.getCategories()
         }
