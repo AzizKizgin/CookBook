@@ -19,6 +19,8 @@
 		E01C8A2E2B62E47400329720 /* FavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C8A2D2B62E47400329720 /* FavButton.swift */; };
 		E01C8A312B63110D00329720 /* MealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C8A302B63110D00329720 /* MealDetailView.swift */; };
 		E01C8A332B63111E00329720 /* MealDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C8A322B63111E00329720 /* MealDetailViewModel.swift */; };
+		E03BE7642B67084F00F1B9F7 /* TabbedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03BE7632B67084F00F1B9F7 /* TabbedItems.swift */; };
+		E03BE7682B6708B500F1B9F7 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03BE7672B6708B500F1B9F7 /* BottomBar.swift */; };
 		E04C1C562B5D7A5300236661 /* FlipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04C1C552B5D7A5300236661 /* FlipCard.swift */; };
 		E07C5D802B59B73200BC0BFD /* CookbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07C5D7F2B59B73200BC0BFD /* CookbookApp.swift */; };
 		E07C5D822B59B73200BC0BFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07C5D812B59B73200BC0BFD /* ContentView.swift */; };
@@ -74,6 +76,8 @@
 		E01C8A2D2B62E47400329720 /* FavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavButton.swift; sourceTree = "<group>"; };
 		E01C8A302B63110D00329720 /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
 		E01C8A322B63111E00329720 /* MealDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModel.swift; sourceTree = "<group>"; };
+		E03BE7632B67084F00F1B9F7 /* TabbedItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedItems.swift; sourceTree = "<group>"; };
+		E03BE7672B6708B500F1B9F7 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		E04C1C552B5D7A5300236661 /* FlipCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipCard.swift; sourceTree = "<group>"; };
 		E07C5D7C2B59B73200BC0BFD /* Cookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cookbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07C5D7F2B59B73200BC0BFD /* CookbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookApp.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				E04C1C552B5D7A5300236661 /* FlipCard.swift */,
 				E07EDD282B6184CD00A9AAEE /* LoadingIndicator.swift */,
 				E01C8A2D2B62E47400329720 /* FavButton.swift */,
+				E03BE7672B6708B500F1B9F7 /* BottomBar.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				E0CD90182B64316300732682 /* FilterType.swift */,
+				E03BE7632B67084F00F1B9F7 /* TabbedItems.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -465,11 +471,13 @@
 				E0CD902D2B64430000732682 /* SettingsViewModel.swift in Sources */,
 				E003DE2A2B5C3E5300253F90 /* DataManager.swift in Sources */,
 				E003DE2E2B5C968B00253F90 /* CategoryDataType.swift in Sources */,
+				E03BE7682B6708B500F1B9F7 /* BottomBar.swift in Sources */,
 				E01080962B5F26C9002F938C /* MealMenager.swift in Sources */,
 				E0CD90282B64428600732682 /* RandomView.swift in Sources */,
 				E07EDD292B6184CD00A9AAEE /* LoadingIndicator.swift in Sources */,
 				E0CD90202B643FFE00732682 /* SearchViewModel.swift in Sources */,
 				E07C5D802B59B73200BC0BFD /* CookbookApp.swift in Sources */,
+				E03BE7642B67084F00F1B9F7 /* TabbedItems.swift in Sources */,
 				E010809C2B5F2ED5002F938C /* FilterResultDataType.swift in Sources */,
 				E0CD90232B64404100732682 /* SavedViewModel.swift in Sources */,
 				E01C8A332B63111E00329720 /* MealDetailViewModel.swift in Sources */,

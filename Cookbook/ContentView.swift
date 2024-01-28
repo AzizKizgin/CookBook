@@ -8,38 +8,45 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection: Int = 0
+    
+    @State private var selectedTab = 0
+    
     var body: some View {
-        TabView(selection: $selection){
-            HomeView()
-                .tag(0)
-                .tabItem {
-                    Image(systemName: "house")
+        NavigationStack {
+            ZStack(alignment: .bottom){
+                HomeView()
+                TabView(selection: $selectedTab) {
+                    HomeView()
+                        .tag(0)
+                        .toolbar(.hidden, for: .tabBar)
+            
+                    SearchView()
+                        .tag(1)
+                        .toolbar(.hidden, for: .tabBar)
+                    
+                    RandomView()
+                        .tag(2)
+                        .toolbar(.hidden, for: .tabBar)
+                    
+                    SavedView()
+                        .tag(3)
+                        .toolbar(.hidden, for: .tabBar)
+                    
+                    SettingsView()
+                        .tag(4)
+                        .toolbar(.hidden, for: .tabBar)
                 }
-            SearchView()
-                .tag(1)
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                }
-            RandomView()
-                .tag(2)
-                .tabItem {
-                    Image(systemName: "dice")
-                }
-            SavedView()
-                .tag(3)
-                .tabItem {
-                    Image(systemName: "bookmark")
-                }
-            SettingsView()
-                .tag(3)
-                .tabItem {
-                    Image(systemName: "gear")
-                }
+                .navigationBarTitleDisplayMode(.inline)
+                BottomBar(selectedTab: $selectedTab)
+            }
+
         }
     }
 }
 
 #Preview {
-    ContentView()
+    NavigationStack{
+        ContentView()
+    }
+        
 }
