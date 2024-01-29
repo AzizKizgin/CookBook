@@ -14,7 +14,6 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom){
-                HomeView()
                 TabView(selection: $selectedTab) {
                     HomeView()
                         .tag(0)
