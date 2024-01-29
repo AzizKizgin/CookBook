@@ -26,7 +26,6 @@ class MealMenager{
         dataManager.fetchData(for: Endpoints.getMealById(id: id)) { (result: Result<SearchMealDataType,Error>) in
             switch result {
             case .success(let data):
-                print(data)
                 completion(data.meals.first)
             case .failure:
                 completion(nil)
@@ -47,6 +46,17 @@ class MealMenager{
     
     func getMealsByArea(area: String, completion: @escaping ([FilterResult]?) -> Void) {
         dataManager.fetchData(for: Endpoints.getMealsByArea(area: area)){ (result: Result<FilterResultDataType,Error>) in
+            switch result {
+            case .success(let data):
+                completion(data.meals)
+            case .failure:
+                completion(nil)
+            }
+        }
+    }
+    
+    func getMealsByName(name: String, completion: @escaping ([Meal]?) -> Void) {
+        dataManager.fetchData(for: Endpoints.searchMealByName(name: name)) { (result: Result<SearchMealDataType,Error>) in
             switch result {
             case .success(let data):
                 completion(data.meals)
