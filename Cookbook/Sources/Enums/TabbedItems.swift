@@ -28,10 +28,10 @@ enum TabbedItems: Int, CaseIterable{
         }
     }
     
-    func getLabel(isActive: Bool) -> String {
+    func getLabel() -> String {
         switch self {
         case .home:
-            return "Categories"
+            return "Home"
         case .search:
             return "Search"
         case .random:
