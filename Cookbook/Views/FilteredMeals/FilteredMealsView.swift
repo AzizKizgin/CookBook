@@ -20,6 +20,7 @@ struct FilteredMealsView: View {
                 LoadingIndicator()
             } else {
                 ScrollView {
+                    SearchBar(text: $filteredMealsVM.searchText)
                     LazyVGrid(columns: columns,spacing: 50){
                         ForEach(filteredMealsVM.filteredMeals, id: \.id) { meal in
                             FlipCard(url: meal.image)
@@ -37,7 +38,6 @@ struct FilteredMealsView: View {
                 .navigationDestination(item: $filteredMealsVM.mealId){ item in
                     MealDetailView(mealId: item)
                 }
-                .searchable(text: $filteredMealsVM.searchText, prompt: "Search...")
                 .onChange(of: filteredMealsVM.searchText, { _, _ in
                     filteredMealsVM.searchMeals()
                 })
