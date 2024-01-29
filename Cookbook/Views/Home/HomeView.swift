@@ -31,6 +31,8 @@ struct HomeView: View {
                         }
                     }
                     .frame(maxWidth: .infinity)
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
                 }
                 .buttonStyle(.borderless)
                 .scrollContentBackground(.hidden)
