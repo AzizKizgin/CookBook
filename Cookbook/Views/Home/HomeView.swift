@@ -13,7 +13,7 @@ struct HomeView: View {
         GridItem(.adaptive(minimum: 300))
     ]
     var body: some View {
-        NavigationStack{
+        VStack{
             if homeVM.isLoading {
                 LoadingIndicator()
             } else {

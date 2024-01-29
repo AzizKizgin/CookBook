@@ -15,7 +15,7 @@ struct FilteredMealsView: View {
         GridItem(.adaptive(minimum: 300))
     ]
     var body: some View {
-        NavigationStack{
+        VStack{
             if filteredMealsVM.isLoading {
                 LoadingIndicator()
             } else {
