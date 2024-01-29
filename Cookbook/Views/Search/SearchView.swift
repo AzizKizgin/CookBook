@@ -48,7 +48,7 @@ struct SearchView: View {
             showList = true
         }
         .navigationDestination(for: Meal.self) { meal in
-            MealDetailView(mealId: meal.id)
+            MealDetail(meal: meal)
         }
     }
 }
