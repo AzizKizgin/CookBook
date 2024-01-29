@@ -9,6 +9,8 @@ import SwiftUI
 
 struct BottomBar: View {
     @Binding var selectedTab: Int
+    @State private var showInfo: Bool = false
+    @State private var infoText: String = ""
     var body: some View {
         ZStack{
             HStack{
@@ -16,6 +18,8 @@ struct BottomBar: View {
                     let isActive = selectedTab == item.rawValue
                     Button{
                         selectedTab = item.rawValue
+                        showInfo = true
+                        infoText = TabbedItems(rawValue: selectedTab)!.getLabel()
                     } label: {
                         BarItem(imageName: item.getIcon(isActive: isActive), isActive: isActive)
                     }
@@ -29,6 +33,28 @@ struct BottomBar: View {
         .cornerRadius(35)
         .padding(.horizontal, 10)
         .animation(.easeInOut, value: selectedTab)
+        .overlay(alignment: .bottom) {
+            if showInfo {
+                VStack{
+                    Text(infoText)
+                }
+                .padding(.vertical, 5)
+                .padding(.horizontal, 15)
+                .background(.accent)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .frame(height: 180)
+            }
+        }
+        .onChange(of: showInfo) { _, _ in
+            if showInfo {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+                    showInfo.toggle()
+                    infoText = ""
+                }
+            }
+        }
+        .animation(.easeInOut, value: selectedTab)
+        .animation(.easeInOut, value: showInfo)
     }
 }
 
