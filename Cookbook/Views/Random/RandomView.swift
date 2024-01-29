@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct RandomView: View {
+    @StateObject var randomVM = RandomViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            if randomVM.isLoading {
+                LoadingIndicator()
+            }
+            else if let meal = randomVM.meal {
+                MealDetail(meal: meal)
+            }
+        }
+        .onAppear{
+            randomVM.getRandomMeal()
+        }
     }
 }
 
 #Preview {
-    RandomView()
+    NavigationStack{
+        RandomView()
+    }
 }
