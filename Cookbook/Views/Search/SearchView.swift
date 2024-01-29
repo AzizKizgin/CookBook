@@ -9,20 +9,18 @@ import SwiftUI
 
 struct SearchView: View {
     @StateObject var searchVM = SearchViewModel()
-    // I'm using this state for searchbar bug which occurs with tabview
-    @State var showList: Bool = false
     var body: some View {
         VStack{
-            if showList {
-                List{
-                    ForEach(searchVM.meals, id: \.id) { meal in
-                        NavigationLink(value: meal) {
-                            Text(meal.name)
-                        }
+            SearchBar(text: $searchVM.searchText)
+            List{
+                ForEach(searchVM.meals, id: \.id) { meal in
+                    NavigationLink(value: meal) {
+                        Text(meal.name)
                     }
-                    .padding(.bottom, 100)
                 }
             }
+            .safeAreaPadding(.bottom,100)
+      
         }
         .overlay{
             if searchVM.meals.isEmpty {
@@ -36,17 +34,12 @@ struct SearchView: View {
                 .foregroundStyle(.accent)
             }
         }
-        .searchable(text: $searchVM.searchText,
-               placement: .navigationBarDrawer(displayMode: .always))
         .onChange(of: searchVM.searchText) { _, newValue in
             if !newValue.isEmpty {
                 searchVM.searchMeal()
             } else {
                 searchVM.meals = []
             }
-        }
-        .onAppear {
-            showList = true
         }
         .navigationDestination(for: Meal.self) { meal in
             MealDetail(meal: meal)
