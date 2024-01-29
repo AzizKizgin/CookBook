@@ -35,7 +35,7 @@ struct ContentView: View {
                         .tag(4)
                         .toolbar(.hidden, for: .tabBar)
                 }
-                .navigationBarTitleDisplayMode(.inline)
+                .tabViewStyle(.page(indexDisplayMode: .never))
                 BottomBar(selectedTab: $selectedTab)
             }
 
