@@ -31,48 +31,51 @@ struct MealDetail: View {
             }
             .frame(maxWidth: .infinity)
             VStack(spacing: 20){
-                Group{
-                    VStack(spacing: 10){
-                        Text("Instructions")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity,alignment: .leading)
-                        Text(meal.instructions ?? "")
-                    }
-                    VStack(spacing: 10){
-                        Text("Ingredient")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity,alignment: .leading)
-                        ForEach(meal.getIngredients(),id:\.id){ ingredient in
-                            HStack(spacing: 10){
-                                Image(systemName: "checkmark.circle.fill")
-                                    .foregroundStyle(.orange)
-                                Text(ingredient.quantity)
-                                    .bold()
-                                    .foregroundStyle(.orange)
-                                Text(ingredient.name.capitalized)
-                                
-                            }
-                            .textInputAutocapitalization(.words)
-                            .frame(maxWidth: .infinity,alignment:.leading)
+                VStack{
+                    Group{
+                        VStack(spacing: 10){
+                            Text("Instructions")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .frame(maxWidth: .infinity,alignment: .leading)
+                            Text(meal.instructions ?? "")
                         }
-                    }
-                }
-                .padding(.horizontal)
-                ScrollView(.horizontal){
-                    HStack(spacing:20){
-                        ForEach(meal.getIngredients(),id:\.id){ ingredient in
-                            FlipCard(url: Endpoints.getIngredientImage(name: ingredient.name.uppercased()))
-                                .width(100)
-                                .height(100)
-                                .onCardPress {
-                                    selectedIngredient = ingredient.name
+                        VStack(spacing: 10){
+                            Text("Ingredient")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .frame(maxWidth: .infinity,alignment: .leading)
+                            ForEach(meal.getIngredients(),id:\.id){ ingredient in
+                                HStack(spacing: 10){
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundStyle(.orange)
+                                    Text(ingredient.quantity)
+                                        .bold()
+                                        .foregroundStyle(.orange)
+                                    Text(ingredient.name.capitalized)
+                                    
                                 }
+                                .textInputAutocapitalization(.words)
+                                .frame(maxWidth: .infinity,alignment:.leading)
+                            }
                         }
                     }
-                    .padding()
+                    .padding(.horizontal)
+                    ScrollView(.horizontal){
+                        HStack(spacing:20){
+                            ForEach(meal.getIngredients(),id:\.id){ ingredient in
+                                FlipCard(url: Endpoints.getIngredientImage(name: ingredient.name.uppercased()))
+                                    .width(100)
+                                    .height(100)
+                                    .onCardPress {
+                                        selectedIngredient = ingredient.name
+                                    }
+                            }
+                        }
+                        .padding()
+                    }
                 }
+                .padding(.bottom, 100)
             }
         }
         .navigationDestination(item: $selectedIngredient){ ingredient in

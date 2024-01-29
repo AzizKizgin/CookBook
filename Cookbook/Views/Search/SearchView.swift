@@ -20,6 +20,7 @@ struct SearchView: View {
                             Text(meal.name)
                         }
                     }
+                    .padding(.bottom, 100)
                 }
             }
         }

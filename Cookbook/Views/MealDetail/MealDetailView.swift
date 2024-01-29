@@ -15,10 +15,8 @@ struct MealDetailView: View {
             if mealDetailVM.isLoading {
                 LoadingIndicator()
             }
-            else{
-                if let meal = mealDetailVM.meal {
-                    MealDetail(meal: meal)
-                }
+            else if let meal = mealDetailVM.meal{
+                MealDetail(meal: meal)
             }
         }
         .onAppear{

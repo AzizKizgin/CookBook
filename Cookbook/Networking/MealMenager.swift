@@ -65,4 +65,15 @@ class MealMenager{
             }
         }
     }
+    
+    func getRandomMeal(completion: @escaping (Meal?) -> Void){
+        dataManager.fetchData(for: Endpoints.getRandomMeal) { (result: Result<SearchMealDataType,Error>) in
+            switch result {
+            case .success(let data):
+                completion(data.meals.first)
+            case .failure:
+                completion(nil)
+            }
+        }
+    }
 }
