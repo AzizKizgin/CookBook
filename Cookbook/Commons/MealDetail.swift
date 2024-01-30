@@ -32,7 +32,7 @@ struct MealDetail: View {
             .frame(maxWidth: .infinity)
             VStack(spacing: 20){
                 VStack{
-                    Group{
+                    VStack(spacing: 20){
                         VStack(spacing: 10){
                             Text("Instructions")
                                 .font(.title2)
