@@ -12,6 +12,7 @@ class FilteredMealsViewModel: ObservableObject {
     @Published var mealId: String?
     @Published var filteredMeals: [FilterResult] = []
     @Published var searchText: String = ""
+    @Published var dataLoaded = false
     
     func getMealsByCategory(category: String) {
         self.isLoading = true
@@ -45,13 +46,16 @@ class FilteredMealsViewModel: ObservableObject {
     }
     
     func getMeals(by filterBy: String, type: FilterType) {
-        switch type {
-        case .ingredient:
-            getMealsByIngredient(ingredient: filterBy)
-        case .area:
-            getMealsByArea(area: filterBy)
-        case .category:
-            getMealsByCategory(category: filterBy)
+        if !dataLoaded {
+            switch type {
+            case .ingredient:
+                getMealsByIngredient(ingredient: filterBy)
+            case .area:
+                getMealsByArea(area: filterBy)
+            case .category:
+                getMealsByCategory(category: filterBy)
+            }
+            dataLoaded = true
         }
     }
     
