@@ -16,6 +16,11 @@ struct RandomView: View {
             }
             else if let meal = randomVM.meal {
                 MealDetail(meal: meal)
+                    .refreshable {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                            randomVM.refresh()
+                        }
+                    }
             }
         }
         .onAppear{
