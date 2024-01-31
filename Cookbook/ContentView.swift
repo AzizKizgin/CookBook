@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var selectedTab = 0
-    
+    @AppStorage("isDark") private var isDark: Bool = false
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom){
@@ -27,18 +27,14 @@ struct ContentView: View {
                         .tag(2)
                         .toolbar(.hidden, for: .tabBar)
                     
-                    SavedView()
-                        .tag(3)
-                        .toolbar(.hidden, for: .tabBar)
-                    
                     SettingsView()
-                        .tag(4)
+                        .tag(3)
                         .toolbar(.hidden, for: .tabBar)
                 }
                 BottomBar(selectedTab: $selectedTab)
             }
-
         }
+        .preferredColorScheme(isDark ? .dark: .light)
     }
 }
 

@@ -10,7 +10,6 @@ enum TabbedItems: Int, CaseIterable{
     case home = 0
     case search
     case random
-    case saved
     case settings
     
     func getIcon(isActive: Bool) -> String {
@@ -21,8 +20,6 @@ enum TabbedItems: Int, CaseIterable{
             return "magnifyingglass"
         case .random:
             return isActive ? "dice.fill": "dice"
-        case .saved:
-            return isActive ? "bookmark.fill": "bookmark"
         case .settings:
             return "gear"
         }
@@ -36,8 +33,6 @@ enum TabbedItems: Int, CaseIterable{
             return "Search"
         case .random:
             return "Random"
-        case .saved:
-            return "Saved"
         case .settings:
             return "Settings"
         }
